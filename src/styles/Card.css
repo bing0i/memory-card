@@ -1,0 +1,21 @@
+div.Card {
+  display: inline-block;
+}
+
+div.imgFrame {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  margin: 20px;
+}
+
+div.imgContainer {
+  background-color: black;
+  color: white;
+}
+
+img.cardImg {
+  width: 250px;
+  height: 282px;
+}
