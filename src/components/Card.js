@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import '../styles/Card.css';
 
 function Card(props) {
@@ -6,13 +7,25 @@ function Card(props) {
     setNewChampions,
   } = props;
 
+  const [isClicked, setIsClicked] = useState(false);
+
   return (
-    <div className="Card" onClick={setNewChampions}>
+    <div 
+      className={isClicked ? "Card clicked" : "Card"} 
+      onClick={() => {
+        setIsClicked(true);
+        setNewChampions();
+      }}
+      onTransitionEnd={() => {
+        setIsClicked(false);
+      }}
+    >
       <div className="imgFrame">
         <div className="imgContainer">
-          <p>{champion.name}</p>
           <img className="cardImg" alt={champion.name} src={champion.image.default} />
-          <p>{champion.blood}</p>
+          <div className="championName">
+            {champion.name}
+          </div>
         </div>
       </div>
     </div>

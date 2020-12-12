@@ -1,6 +1,6 @@
 import './styles/App.css';
 import Card from './components/Card';
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 
 function importAllImages(r) {
   return r.keys().map(r);
@@ -36,7 +36,6 @@ function getChampions() {
     let champion = {
       image: championImage,
       name: championNames[index],
-      blood: getRandomNumber(20),
     };
     champions.push(champion);
   });
@@ -85,9 +84,8 @@ function checkIfArrayIsUnique(array) {
 function App() {
   const NUMBER_OF_CARDS = 5;
   const champions = getChampions();
-  const unusedNumbers = getUnusedNumbers([], champions, NUMBER_OF_CARDS);
-  const [usedIndex, setUsedIndex] = useState([...unusedNumbers]);
-  const [randomChampions, setRandomChampions] = useState(unusedNumbers.map(unusedNumber => champions[unusedNumber]));
+  const [usedIndex, setUsedIndex] = useState([]);
+  const [randomChampions, setRandomChampions] = useState([]);
 
   const setNewChampions = useCallback(() => {
     const unusedNumbers = getUnusedNumbers(usedIndex, champions, NUMBER_OF_CARDS);
@@ -101,11 +99,15 @@ function App() {
     }
   }, [usedIndex, champions, NUMBER_OF_CARDS]);
 
+  useEffect(setNewChampions, []); 
+
   return (
     <div className="App">
-      {randomChampions.map((randomChampion, index) => {
-        return <Card key={index} champion={randomChampion} setNewChampions={setNewChampions} />
-      })}
+      <div className= "cards">
+        {randomChampions.map((randomChampion, index) => {
+          return <Card key={index} champion={randomChampion} setNewChampions={setNewChampions} />
+        })}
+      </div>
     </div>
   );
 }

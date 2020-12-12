@@ -1,5 +1,15 @@
 div.Card {
+  cursor: pointer;
   display: inline-block;
+  transition: transform 200ms ease-in-out;
+}
+
+div.Card:hover {
+  transform: scale(1.1, 1.1);
+}
+
+div.Card.clicked {
+  transform: scale(1, 1);
 }
 
 div.imgFrame {
@@ -10,12 +20,36 @@ div.imgFrame {
   margin: 20px;
 }
 
-div.imgContainer {
-  background-color: black;
-  color: white;
-}
-
 img.cardImg {
+  display: block;
   width: 250px;
   height: 282px;
+}
+
+div.championName {
+  font-size: 18px;
+  font-weight: bold;
+  padding: 15px 0px;
+  color: black;
+}
+
+div.imgContainer {
+  background: linear-gradient(-45deg, black, #FF6355, #FAE442, black);
+  background-size: 400% 400%;
+}
+
+div.imgContainer:hover {
+  animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
 }
