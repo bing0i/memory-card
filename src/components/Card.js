@@ -3,10 +3,11 @@ import '../styles/Card.css';
 function Card(props) {
   const {
     champion,
+    setNewChampions,
   } = props;
 
   return (
-    <div className="Card">
+    <div className="Card" onClick={setNewChampions}>
       <div className="imgFrame">
         <div className="imgContainer">
           <p>{champion.name}</p>
