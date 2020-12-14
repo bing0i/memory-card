@@ -4,7 +4,11 @@ import '../styles/Card.css';
 function Card(props) {
   const {
     champion,
-    setNewChampions,
+    updateRandomChampions,
+    chosenIndex,
+    updateIsWin,
+    updateStatesWhenGameContinuing,
+    updateStatesWhenGameOver,
   } = props;
 
   const [isClicked, setIsClicked] = useState(false);
@@ -14,7 +18,13 @@ function Card(props) {
       className={isClicked ? "Card clicked" : "Card"} 
       onClick={() => {
         setIsClicked(true);
-        setNewChampions();
+        if (chosenIndex.includes(champion.index)) {
+          updateStatesWhenGameOver(false);
+          updateIsWin(false);
+        } else {
+          updateStatesWhenGameContinuing(chosenIndex.concat(champion.index));
+          updateRandomChampions();
+        }
       }}
       onTransitionEnd={() => {
         setIsClicked(false);

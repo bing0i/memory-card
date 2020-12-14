@@ -8,9 +8,62 @@
   height: 100%;
   width: 100%;
   overflow: hidden;
+  background: linear-gradient(-45deg, #FAE442, black, black, #FAE442);
+  background-size: 400% 400%;
+  animation: gradient 60s ease infinite;
 }
 
 div.cards {
   display: table-cell;
   vertical-align: middle;
+}
+
+div.notifications {
+  position: fixed;
+  top: 50px;
+  left: 50px;
+  background: linear-gradient(-45deg, black, black, black, #FF6355);
+  background-size: 400% 400%;
+  animation: gradient 30s ease infinite;
+  padding: 10px 40px;
+  font-size: 20px;
+  color: white;
+}
+
+p.winText, p.loseText, p.guideText {
+  margin: 0;
+  display: inline-block;
+}
+
+p.winText {
+  color: #FAE442;
+}
+
+p.loseText {
+  color: #FF6355;
+}
+
+div.scores {
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 10px 40px;
+  color: black;
+  background: linear-gradient(-45deg, black, #FF6355, #FAE442, black);
+  background-size: 400% 400%;
+  animation: gradient 60s ease infinite;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
 }
