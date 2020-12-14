@@ -89,8 +89,12 @@ function App() {
   const [isWin, setIsWin] = useState(false);
 
   function updateStatesWhenGameOver(isWinn) {
+    if (isWinn) {
+      setHighScore(score + 1)
+    } else if (score > highScore) {
+      setHighScore(score);
+    }
     setScore(0);
-    isWinn ? setHighScore(score + 1) : setHighScore(score);
     setChosenIndex([]);
     const unusedNumbers = getUnusedNumbers([], champions, NUMBER_OF_CARDS);
     setRandomChampions(unusedNumbers.map(unusedNumber => champions[unusedNumber]));
